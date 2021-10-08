@@ -2,7 +2,7 @@
   <div class="main-container">
     <Hello msg="The Greatest Meme Generator" />
     <div class="picture-container">
-      <TextInput :msg="message" :handleChange="handleChange" />
+      <Inputs :msg="message" :handleChange="handleChange" />
       <Picture :messages="messages" />
     </div>
   </div>
@@ -11,14 +11,14 @@
 <script>
 import Hello from "./components/Hello.vue";
 import Picture from "./components/Picture.vue";
-import TextInput from "./components/TextInput.vue";
+import Inputs from "./components/Inputs.vue";
 
 export default {
   name: "App",
   components: {
     Hello,
     Picture,
-    TextInput,
+    Inputs,
   },
   data: function() {
     return { message: "I AM A \nUNICORN", messages: ["I AM A", "UNICORN"] };

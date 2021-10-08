@@ -1,9 +1,10 @@
 <template>
   <div class="picture">
     <svg
+      id="meme"
       width="100%"
       height="100%"
-      viewBox="0 0 100 100"
+      viewBox="0 0 67 100"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
@@ -12,7 +13,7 @@
         x="0"
         y="0"
         height="100"
-        width="100"
+        width="67"
       />
       <text
         v-for="(message, index) in messages"
@@ -53,7 +54,7 @@ export default {
 
 <style scoped>
 .picture {
-  width: 70%;
+  width: 50%;
 }
 
 @media (max-width: 1250px) {
@@ -64,6 +65,7 @@ export default {
 
 .message {
   font-size: 8px;
+  font-family: Helvetica;
   fill: rgba(2, 2, 2, 0.6);
   white-space: pre-line;
 }
