@@ -1,26 +1,73 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main-container">
+    <Hello msg="The Greatest Meme Generator" />
+    <div class="picture-container">
+      <TextInput :msg="message" :handleChange="handleChange" />
+      <Picture :messages="messages" />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Hello from "./components/Hello.vue";
+import Picture from "./components/Picture.vue";
+import TextInput from "./components/TextInput.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Hello,
+    Picture,
+    TextInput,
+  },
+  data: function() {
+    return { message: "I AM A \nUNICORN", messages: ["I AM A", "UNICORN"] };
+  },
+  methods: {
+    handleChange: function(message) {
+      this.message = message;
+      this.messages = message.split("\n").map((text) => text.trim());
+    },
+  },
+};
 </script>
 
 <style>
+.main-container {
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.picture-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media (max-width: 1250px) {
+  .main-container {
+    width: 100%;
+  }
+  .picture-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+body {
+  background-color: #222;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #e8e8e8;
 }
 </style>
