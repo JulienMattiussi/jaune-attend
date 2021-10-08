@@ -24,7 +24,7 @@
         text-anchor="middle"
         transform="translate(2, 53) rotate(1.6)"
       >
-        <tspan x="50%" class="message">
+        <tspan x="50%" class="message" :style="getFontSize()">
           {{ message }}
         </tspan>
       </text>
@@ -41,15 +41,30 @@ export default {
   methods: {
     setYPosition: function(index) {
       if (this.messages.length === 2) {
-        return index ? 5 : -5;
+        return index === 0 ? -5 : 5;
       }
       if (this.messages.length === 3) {
-        return index === 2 ? 7 : index === 1 ? -1 : -9;
+        return index === 0 ? -9 : index === 1 ? -1 : 7;
+      }
+      if (this.messages.length === 4) {
+        return index === 0 ? -11 : index === 1 ? -5 : index === 2 ? 2 : 9;
       }
       return index;
     },
+    getFontSize: function() {
+        const rowSize = getMaxRowSize(this.messages);
+        const rowNumber = this.messages.length;
+        return `font-size: ${rowSize > 10 || rowNumber > 3 ? 6 : 8}px`;
+    },
   },
 };
+
+const getMaxRowSize = (messages) => {
+    return messages.reduce((size, message) => {
+        const currentSize = message.trim().length;
+      return size > currentSize ? size : currentSize;
+    }, 0);
+}
 </script>
 
 <style scoped>
@@ -64,7 +79,6 @@ export default {
 }
 
 .message {
-  font-size: 8px;
   font-family: Helvetica;
   fill: rgba(2, 2, 2, 0.6);
   white-space: pre-line;

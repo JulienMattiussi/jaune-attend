@@ -5,6 +5,9 @@
       placeholder="Place the message here"
       rows="3"
     ></textarea>
+    <button v-on:click="setRandom">
+      Random
+    </button>
     <button v-on:click="save">
       Save
     </button>
@@ -13,6 +16,7 @@
 
 <script>
 import { saveSvgAsPng } from "save-svg-as-png";
+
 export default {
   name: "Inputs",
   props: {
@@ -29,7 +33,6 @@ export default {
   },
   methods: {
     save: function() {
-      console.log("save");
       saveSvgAsPng(document.getElementById("meme"), "meme.png", {
         scale: 10,
         fonts: [
@@ -43,8 +46,23 @@ export default {
         ],
       });
     },
+    setRandom: function() {
+      this.handleChange(randomTexts[getRandomInt(randomTexts.length - 1)]);
+    },
   },
 };
+
+const getRandomInt = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
+const randomTexts = [
+  "Voici mon\n paillasson",
+  "GIT POULE",
+  "Save me !",
+  "Rencontre des\n développeurs hot\n de ta région",
+  "Marmelab\nrecrute",
+];
 </script>
 
 <style scoped>
