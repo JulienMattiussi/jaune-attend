@@ -22,11 +22,11 @@
         x="32"
         :y="getYPosition(index)"
         text-anchor="middle"
-        transform="translate(2, 53) rotate(1.6)"
+        transform="translate(4, 53) rotate(1.6)"
         :style="getFont()"
         class="message"
       >
-          {{ message }}
+        {{ message }}
       </text>
     </svg>
   </div>
@@ -52,28 +52,29 @@ export default {
       return index;
     },
     getFont: function() {
-        const rowSize = getMaxRowSize(this.messages);
-        const rowNumber = this.messages.length;
-        return `font-family: Nunito; font-size: ${rowSize > 13 || rowNumber > 3 ? 6 : 8}px`;
+      const rowSize = getMaxRowSize(this.messages);
+      const rowNumber = this.messages.length;
+      return `font-family: 'Comfortaa', sans-serif; font-size: ${
+        rowSize > 15 ? 5 : rowSize > 13 || rowNumber > 3 ? 6 : 8
+      }px`;
     },
   },
 };
 
 const getMaxRowSize = (messages) => {
-    return messages.reduce((size, message) => {
-        const currentSize = message.trim().length;
-      return size > currentSize ? size : currentSize;
-    }, 0);
-}
+  return messages.reduce((size, message) => {
+    const currentSize = message.trim().length;
+    return size > currentSize ? size : currentSize;
+  }, 0);
+};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Nunito'), local('Nunito'), url(https://fonts.googleapis.com/css2?family=Nunito&display=swap) format('woff2');
+  font-family: "Comfortaa";
+  font-style: bold;
+  font-weight: 400;
+  src: url(../assets/Comfortaa-Bold.ttf) format("truetype");
 }
 
 .picture {

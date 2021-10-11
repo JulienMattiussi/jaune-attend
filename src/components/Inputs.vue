@@ -35,14 +35,6 @@ export default {
     save: function() {
       saveSvgAsPng(document.getElementById("meme"), "meme.png", {
         scale: 10,
-        /* fonts: [
-          {
-            url:
-              "https://fonts.googleapis.com/css2?family=Nunito&display=swap",
-            format: "application/font-woff2",
-            text: "@font-face {font-family: 'Nunito';  font-style: normal;  font-weight: 400; src: local('Nunito'), local('Nunito'), url(https://fonts.googleapis.com/css2?family=Nunito&display=swap) format('woff2');}",
-          },
-        ], */
       });
     },
     setRandom: function() {
