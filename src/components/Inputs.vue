@@ -35,15 +35,14 @@ export default {
     save: function() {
       saveSvgAsPng(document.getElementById("meme"), "meme.png", {
         scale: 10,
-        fonts: [
+        /* fonts: [
           {
             url:
-              "https://fonts.gstatic.com/s/Helvetica/v20/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2",
+              "https://fonts.googleapis.com/css2?family=Nunito&display=swap",
             format: "application/font-woff2",
-            text:
-              "@font-face {font-family: 'Helvetica';  font-style: normal;  font-weight: 400; src: local('Helvetica'), local('Helvetica'), url(https://fonts.gstatic.com/s/Helvetica/v20/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2) format('woff2');  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;}",
+            text: "@font-face {font-family: 'Nunito';  font-style: normal;  font-weight: 400; src: local('Nunito'), local('Nunito'), url(https://fonts.googleapis.com/css2?family=Nunito&display=swap) format('woff2');}",
           },
-        ],
+        ], */
       });
     },
     setRandom: function() {
@@ -60,8 +59,15 @@ const randomTexts = [
   "Voici mon\n paillasson",
   "GIT POULE",
   "Save me !",
-  "Rencontre des\n développeurs hot\n de ta région",
+  "Rencontre des\n développeurs\n hot de ta région",
   "Marmelab\nrecrute",
+  "Kevin, je suis\n ton père",
+  "Happy\n birthday",
+  "Don't try this\n at home",
+  "Bon \n week-end !",
+  "Jonathan\n approved",
+  "Bonjour,\n je suis\n Jonathan",
+  "1 Euro svp,\n pour mangé",
 ];
 </script>
 

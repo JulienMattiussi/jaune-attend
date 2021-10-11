@@ -19,14 +19,14 @@
         v-for="(message, index) in messages"
         v-bind:key="message"
         v-bind:index="index"
-        x="0"
-        :y="setYPosition(index)"
+        x="32"
+        :y="getYPosition(index)"
         text-anchor="middle"
         transform="translate(2, 53) rotate(1.6)"
+        :style="getFont()"
+        class="message"
       >
-        <tspan x="50%" class="message" :style="getFontSize()">
           {{ message }}
-        </tspan>
       </text>
     </svg>
   </div>
@@ -39,7 +39,7 @@ export default {
     messages: Array,
   },
   methods: {
-    setYPosition: function(index) {
+    getYPosition: function(index) {
       if (this.messages.length === 2) {
         return index === 0 ? -5 : 5;
       }
@@ -51,10 +51,10 @@ export default {
       }
       return index;
     },
-    getFontSize: function() {
+    getFont: function() {
         const rowSize = getMaxRowSize(this.messages);
         const rowNumber = this.messages.length;
-        return `font-size: ${rowSize > 10 || rowNumber > 3 ? 6 : 8}px`;
+        return `font-family: Nunito; font-size: ${rowSize > 13 || rowNumber > 3 ? 6 : 8}px`;
     },
   },
 };
@@ -68,6 +68,14 @@ const getMaxRowSize = (messages) => {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Nunito'), local('Nunito'), url(https://fonts.googleapis.com/css2?family=Nunito&display=swap) format('woff2');
+}
+
 .picture {
   width: 50%;
 }
@@ -79,8 +87,7 @@ const getMaxRowSize = (messages) => {
 }
 
 .message {
-  font-family: Helvetica;
-  fill: rgba(2, 2, 2, 0.6);
+  fill: rgba(2, 2, 2, 0.55);
   white-space: pre-line;
 }
 </style>
