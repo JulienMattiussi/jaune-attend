@@ -2,8 +2,13 @@
   <div class="main-container">
     <Hello msg="The Greatest Meme Generator" />
     <div class="picture-container">
-      <Inputs :msg="message" :handleChange="handleChange" />
-      <Picture :messages="messages" />
+      <Inputs
+        :msg="message"
+        :clr="color"
+        :handleChangeText="handleChangeText"
+        :handleChangeColor="handleChangeColor"
+      />
+      <Picture :messages="messages" :color="color" />
     </div>
   </div>
 </template>
@@ -21,12 +26,19 @@ export default {
     Inputs,
   },
   data: function() {
-    return { message: "I AM A \nUNICORN", messages: ["I AM A", "UNICORN"] };
+    return {
+      message: "I AM A \nUNICORN",
+      messages: ["I AM A", "UNICORN"],
+      color: "rgba(2, 2, 2, 0.55)",
+    };
   },
   methods: {
-    handleChange: function(message) {
+    handleChangeText: function(message) {
       this.message = message;
       this.messages = message.split("\n").map((text) => text.trim());
+    },
+    handleChangeColor: function(color) {
+      this.color = color;
     },
   },
 };

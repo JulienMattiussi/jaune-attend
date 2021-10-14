@@ -1,10 +1,13 @@
 <template>
-  <div class="inputs">
-    <textarea
-      v-model="message"
-      placeholder="Place the message here"
-      rows="3"
-    ></textarea>
+  <div class="container">
+    <div class="inputs">
+      <textarea
+        v-model="message"
+        placeholder="Place the message here"
+        rows="4"
+      ></textarea>
+      <color-input class="colors" v-model="color" />
+    </div>
     <button v-on:click="setRandom">
       Random
     </button>
@@ -15,20 +18,29 @@
 </template>
 
 <script>
+import ColorInput from "vue-color-input";
 import { saveSvgAsPng } from "save-svg-as-png";
 
 export default {
   name: "Inputs",
+  components: {
+    ColorInput,
+  },
   props: {
     msg: String,
-    handleChange: Function,
+    clr: String,
+    handleChangeText: Function,
+    handleChangeColor: Function,
   },
   data: function() {
-    return { message: this.msg };
+    return { message: this.msg, color: this.clr };
   },
   watch: {
     message: function(val) {
-      this.handleChange(val);
+      this.handleChangeText(val);
+    },
+    color: function(val) {
+      this.handleChangeColor(val);
     },
   },
   methods: {
@@ -38,7 +50,7 @@ export default {
       });
     },
     setRandom: function() {
-      this.handleChange(randomTexts[getRandomInt(randomTexts.length - 1)]);
+      this.handleChangeText(randomTexts[getRandomInt(randomTexts.length - 1)]);
     },
   },
 };
@@ -60,13 +72,24 @@ const randomTexts = [
   "Jonathan\n approved",
   "Bonjour,\n je suis\n Jonathan",
   "1 Euro svp,\n pour mangé",
+  "❤️",
 ];
 </script>
 
 <style scoped>
-.inputs {
+.container {
   display: flex;
   flex-direction: column;
+}
+.inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.colors {
+  padding: 2px;
+  border: solid 1px white;
+  border-radius: 10px;
 }
 button {
   margin: 10px 0;

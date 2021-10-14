@@ -37,6 +37,7 @@ export default {
   name: "Picture",
   props: {
     messages: Array,
+    color: String,
   },
   methods: {
     getYPosition: function(index) {
@@ -56,7 +57,7 @@ export default {
       const rowNumber = this.messages.length;
       return `font-family: 'Comfortaa', sans-serif; font-size: ${
         rowSize > 15 ? 5 : rowSize > 13 || rowNumber > 3 ? 6 : 8
-      }px`;
+      }px; fill:${this.color};`;
     },
   },
 };

@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "save-svg-as-png": "^1.4.17",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue-color-input": "^1.0.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
