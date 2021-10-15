@@ -5,12 +5,12 @@
       <Inputs
         :msg="message"
         :clr="color"
-        :glss="glasses"
+        :options="options"
         :handleChangeText="handleChangeText"
         :handleChangeColor="handleChangeColor"
-        :handleChangeGlasses="handleChangeGlasses"
+        :handleChangeOption="handleChangeOption"
       />
-      <Picture :messages="messages" :color="color" :glasses="glasses" />
+      <Picture :messages="messages" :color="color" :options="options" />
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
       message: "I AM A \nUNICORN",
       messages: ["I AM A", "UNICORN"],
       color: "rgba(2, 2, 2, 0.55)",
-      glasses: false,
+      options: { glasses: false, blame: false },
     };
   },
   methods: {
@@ -43,8 +43,8 @@ export default {
     handleChangeColor: function(color) {
       this.color = color;
     },
-    handleChangeGlasses: function(glasses) {
-      this.glasses = glasses;
+    handleChangeOption: function(option, value) {
+      this.options[option] = value;
     },
   },
 };

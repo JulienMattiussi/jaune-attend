@@ -4,13 +4,13 @@
       id="meme"
       width="100%"
       height="100%"
-      viewBox="0 0 67 100"
+      :viewBox="`0 0 ${options.blame ? '143 80' : '67 100'}`"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <image
         xlink:href="../assets/JonathanPaillassonVierge.png"
-        x="0"
+        :x="options.blame ? 38 : 0"
         y="0"
         height="100"
         width="67"
@@ -19,7 +19,7 @@
         v-for="(message, index) in messages"
         v-bind:key="message"
         v-bind:index="index"
-        x="32"
+        :x="options.blame ? 69 : 32"
         :y="getYPosition(index)"
         text-anchor="middle"
         transform="translate(4, 53) rotate(1.6)"
@@ -29,13 +29,29 @@
         {{ message }}
       </text>
       <image
-        v-if="glasses"
+        v-if="options.glasses"
         xlink:href="../assets/glasses.png"
-        x="25.5"
-        y="21.5"
+        :x="options.blame ? 63.5 : 25.5"
+        :y="options.blame ? 25 : 21.5"
         height="5"
         width="11.5"
         transform="rotate(-5)"
+      />
+      <image
+        v-if="options.blame"
+        xlink:href="../assets/blameZyhou.jpeg"
+        x="104"
+        y="0"
+        height="80"
+        width="39"
+      />
+      <image
+        v-if="options.blame"
+        xlink:href="../assets/blameHyriel.jpeg"
+        x="0"
+        y="0"
+        height="80"
+        width="39"
       />
     </svg>
   </div>
@@ -47,7 +63,7 @@ export default {
   props: {
     messages: Array,
     color: String,
-    glasses: Boolean,
+    options: Object,
   },
   methods: {
     getYPosition: function(index) {

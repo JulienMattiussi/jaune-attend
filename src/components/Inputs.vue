@@ -12,8 +12,14 @@
       </button>
     </div>
     <div :style="`display: ${displayMore ? 'flex' : 'none'}`" class="more">
-      <input type="checkbox" name="glasses" v-model="glasses" />
-      <label for="glasses">With glasses</label>
+      <div>
+        <input type="checkbox" name="glasses" v-model="glasses" />
+        <label for="glasses">With glasses</label>
+      </div>
+      <div>
+        <input type="checkbox" name="blame" v-model="blame" />
+        <label for="blame">With blame</label>
+      </div>
     </div>
     <button v-on:click="setRandom">
       Random
@@ -36,17 +42,18 @@ export default {
   props: {
     msg: String,
     clr: String,
-    glss: Boolean,
+    options: Object,
     handleChangeText: Function,
     handleChangeColor: Function,
-    handleChangeGlasses: Function,
+    handleChangeOption: Function,
   },
   data: function() {
     return {
       message: this.msg,
       color: this.clr,
       displayMore: false,
-      glasses: this.glss,
+      glasses: this.options.glasses,
+      blame: this.options.blame,
     };
   },
   watch: {
@@ -57,7 +64,10 @@ export default {
       this.handleChangeColor(val);
     },
     glasses: function(val) {
-      this.handleChangeGlasses(val);
+      this.handleChangeOption("glasses", val);
+    },
+    blame: function(val) {
+      this.handleChangeOption("blame", val);
     },
   },
   methods: {
@@ -122,6 +132,14 @@ const randomTexts = [
 }
 .more {
   margin: 10px 0;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.more > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 10px;
 }
 button {
   margin: 10px 0;
