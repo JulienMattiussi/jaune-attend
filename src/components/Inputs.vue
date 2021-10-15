@@ -6,7 +6,14 @@
         placeholder="Place the message here"
         rows="4"
       ></textarea>
-      <color-input class="colors" v-model="color" />
+      <color-input class="colorButton" v-model="color" />
+      <button class="moreButton" v-on:click="showMore">
+        {{ displayMore ? "-" : "+" }}
+      </button>
+    </div>
+    <div :style="`display: ${displayMore ? 'flex' : 'none'}`" class="more">
+      <input type="checkbox" name="glasses" v-model="glasses" />
+      <label for="glasses">With glasses</label>
     </div>
     <button v-on:click="setRandom">
       Random
@@ -29,11 +36,18 @@ export default {
   props: {
     msg: String,
     clr: String,
+    glss: Boolean,
     handleChangeText: Function,
     handleChangeColor: Function,
+    handleChangeGlasses: Function,
   },
   data: function() {
-    return { message: this.msg, color: this.clr };
+    return {
+      message: this.msg,
+      color: this.clr,
+      displayMore: false,
+      glasses: this.glss,
+    };
   },
   watch: {
     message: function(val) {
@@ -42,8 +56,14 @@ export default {
     color: function(val) {
       this.handleChangeColor(val);
     },
+    glasses: function(val) {
+      this.handleChangeGlasses(val);
+    },
   },
   methods: {
+    showMore: function() {
+      this.displayMore = !this.displayMore;
+    },
     save: function() {
       saveSvgAsPng(document.getElementById("meme"), "meme.png", {
         scale: 10,
@@ -86,10 +106,22 @@ const randomTexts = [
   align-items: center;
   gap: 10px;
 }
-.colors {
+.colorButton {
   padding: 2px;
   border: solid 1px white;
   border-radius: 10px;
+}
+.moreButton {
+  border: solid 1px white;
+  border-radius: 10px;
+  width: 46px;
+  height: 46px;
+  font-size: x-large;
+  font-weight: 800;
+  color: green;
+}
+.more {
+  margin: 10px 0;
 }
 button {
   margin: 10px 0;

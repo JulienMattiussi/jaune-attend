@@ -28,6 +28,15 @@
       >
         {{ message }}
       </text>
+      <image
+        v-if="glasses"
+        xlink:href="../assets/glasses.png"
+        x="25.5"
+        y="21.5"
+        height="5"
+        width="11.5"
+        transform="rotate(-5)"
+      />
     </svg>
   </div>
 </template>
@@ -38,6 +47,7 @@ export default {
   props: {
     messages: Array,
     color: String,
+    glasses: Boolean,
   },
   methods: {
     getYPosition: function(index) {
