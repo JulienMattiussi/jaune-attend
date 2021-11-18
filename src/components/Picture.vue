@@ -29,6 +29,15 @@
         {{ message }}
       </text>
       <image
+        v-if="options.christmas"
+        xlink:href="../assets/christmasHat.png"
+        :x="options.blame ? 60 : 22"
+        :y="options.blame ? 14.8 : 11.5"
+        height="18"
+        width="25"
+        transform="rotate(-5)"
+      />
+      <image
         v-if="options.glasses"
         xlink:href="../assets/glasses.png"
         :x="options.blame ? 63.5 : 25.5"

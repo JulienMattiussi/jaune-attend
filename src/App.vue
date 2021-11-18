@@ -29,10 +29,10 @@ export default {
   },
   data: function() {
     return {
-      message: "I AM A \nUNICORN",
-      messages: ["I AM A", "UNICORN"],
-      color: "rgba(2, 2, 2, 0.55)",
-      options: { glasses: false, blame: false },
+      message: "I AM \nSANTA     CLAUS \nBARBIE",
+      messages: ["I AM", "SANTA     CLAUS", "BARBIE"],
+      color: "rgba(120, 2, 2, 0.55)",
+      options: { glasses: false, christmas: true, blame: false },
     };
   },
   methods: {

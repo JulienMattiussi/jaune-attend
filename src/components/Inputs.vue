@@ -17,6 +17,10 @@
         <label for="glasses">With glasses</label>
       </div>
       <div>
+        <input type="checkbox" name="christmas" v-model="christmas" />
+        <label for="christmas">Special christmas</label>
+      </div>
+      <div>
         <input type="checkbox" name="blame" v-model="blame" />
         <label for="blame">With blame</label>
       </div>
@@ -53,6 +57,7 @@ export default {
       color: this.clr,
       displayMore: false,
       glasses: this.options.glasses,
+      christmas: this.options.christmas,
       blame: this.options.blame,
     };
   },
@@ -65,6 +70,9 @@ export default {
     },
     glasses: function(val) {
       this.handleChangeOption("glasses", val);
+    },
+    christmas: function(val) {
+      this.handleChangeOption("christmas", val);
     },
     blame: function(val) {
       this.handleChangeOption("blame", val);
