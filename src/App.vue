@@ -32,7 +32,7 @@ export default {
       message: "I AM \nSANTA     CLAUS \nBARBIE",
       messages: ["I AM", "SANTA     CLAUS", "BARBIE"],
       color: "rgba(120, 2, 2, 0.55)",
-      options: { glasses: false, christmas: true, blame: false },
+      options: { glasses: false, hat: "christmas", blame: false },
     };
   },
   methods: {

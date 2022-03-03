@@ -17,8 +17,41 @@
         <label for="glasses">With glasses</label>
       </div>
       <div>
-        <input type="checkbox" name="christmas" v-model="christmas" />
-        <label for="christmas">Special christmas</label>
+        <fieldset class="hatfieldset">
+          <legend>With hat</legend>
+          <div class="wrapper">
+            <div class="grid-row">
+              <input
+                type="radio"
+                name="hat"
+                id="nohat"
+                value="nohat"
+                v-model="hat"
+              />
+              <label for="nohat">No hat</label>
+            </div>
+            <div class="grid-row">
+              <input
+                type="radio"
+                name="hat"
+                id="christmas"
+                value="christmas"
+                v-model="hat"
+              />
+              <label for="christmas">Special christmas</label>
+            </div>
+            <div class="grid-row">
+              <input
+                type="radio"
+                name="hat"
+                id="cowboy"
+                value="cowboy"
+                v-model="hat"
+              />
+              <label for="cowboy">Cowboy hat</label>
+            </div>
+          </div>
+        </fieldset>
       </div>
       <div>
         <input type="checkbox" name="blame" v-model="blame" />
@@ -57,7 +90,7 @@ export default {
       color: this.clr,
       displayMore: false,
       glasses: this.options.glasses,
-      christmas: this.options.christmas,
+      hat: this.options.hat,
       blame: this.options.blame,
     };
   },
@@ -71,8 +104,8 @@ export default {
     glasses: function(val) {
       this.handleChangeOption("glasses", val);
     },
-    christmas: function(val) {
-      this.handleChangeOption("christmas", val);
+    hat: function(val) {
+      this.handleChangeOption("hat", val);
     },
     blame: function(val) {
       this.handleChangeOption("blame", val);
@@ -151,5 +184,22 @@ const randomTexts = [
 }
 button {
   margin: 10px 0;
+}
+.hatfieldset {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.hatfieldset .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.hatfieldset .grid-row {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.hatfieldset > legend {
+  margin-left: -30px;
+  width: 80px;
 }
 </style>

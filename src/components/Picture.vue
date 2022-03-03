@@ -29,12 +29,21 @@
         {{ message }}
       </text>
       <image
-        v-if="options.christmas"
+        v-if="options.hat === 'christmas'"
         xlink:href="../assets/christmasHat.png"
         :x="options.blame ? 60 : 22"
         :y="options.blame ? 14.8 : 11.5"
         height="18"
         width="25"
+        transform="rotate(-5)"
+      />
+      <image
+        v-if="options.hat === 'cowboy'"
+        xlink:href="../assets/cowboyHat.png"
+        :x="options.blame ? 50 : 12.5"
+        :y="options.blame ? 14.3 : 11"
+        height="26"
+        width="38"
         transform="rotate(-5)"
       />
       <image
