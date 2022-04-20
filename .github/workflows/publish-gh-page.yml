@@ -15,6 +15,7 @@ jobs:
       - name: Build Site
         run: |
           git fetch
+          yarn
           yarn build
           git checkout gh-page-test
           rm -rf node_modules
