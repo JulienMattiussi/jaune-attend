@@ -4,8 +4,7 @@ on:
   workflow_dispatch: ~
 
 jobs:
-  merge-back-pr:
-    if: github.event_name == 'workflow_dispatch'
+  publish-gh-page:
     name: Publish site to github pages
     runs-on: ubuntu-latest
     steps:
