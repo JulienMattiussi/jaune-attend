@@ -5,7 +5,8 @@ on:
 
 jobs:
   merge-back-pr:
-    name: Create "merge back" PR on develop
+    if: github.event_name == 'workflow_dispatch'
+    name: Publish site to github pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
