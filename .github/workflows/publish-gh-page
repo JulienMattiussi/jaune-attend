@@ -27,6 +27,8 @@ jobs:
           rm -rf src
           mv ./dist/* .
           rm -rf dist
+          git add .
+          git commit -m "Publish page"
           git push -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
