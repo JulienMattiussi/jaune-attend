@@ -26,6 +26,10 @@ jobs:
           rm -rf babel.config.js
           rm -rf makefile
           rm -rf src
+          rm -rf css
+          rm -rf js
+          rm -rf fonts
+          rm -rf img
           mv -f ./dist/* .
           rm -rf dist
           git add .
