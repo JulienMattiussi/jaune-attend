@@ -9,7 +9,16 @@
       xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <image
+        v-if="!options.marine"
         xlink:href="../assets/JonathanPaillassonVierge.png"
+        :x="options.blame ? 38 : 0"
+        y="0"
+        height="100"
+        width="67"
+      />
+      <image
+        v-if="options.marine"
+        xlink:href="../assets/MarineFeuille.png"
         :x="options.blame ? 38 : 0"
         y="0"
         height="100"
@@ -22,7 +31,11 @@
         :x="options.blame ? 69 : 32"
         :y="getYPosition(index)"
         text-anchor="middle"
-        transform="translate(4, 53) rotate(1.6)"
+        :transform="
+          options.marine
+            ? 'translate(1, 76) rotate(-5)'
+            : 'translate(4, 53) rotate(1.6)'
+        "
         :style="getFont()"
         class="message"
       >
@@ -35,7 +48,13 @@
         :y="options.blame ? 14.8 : 11.5"
         height="18"
         width="25"
-        transform="rotate(-5)"
+        :transform="
+          options.marine
+            ? options.blame
+              ? 'scale(2.3) translate(-40, -6) rotate(-10)'
+              : 'scale(2.3) translate(-19, -10) rotate(-10)'
+            : 'rotate(-5)'
+        "
       />
       <image
         v-if="options.hat === 'cowboy'"
@@ -44,7 +63,13 @@
         :y="options.blame ? 14.3 : 11"
         height="26"
         width="38"
-        transform="rotate(-5)"
+        :transform="
+          options.marine
+            ? options.blame
+              ? 'scale(2.3) translate(-33.5, -25) rotate(5)'
+              : 'scale(2.3) translate(-13.5, -18) rotate(5)'
+            : 'rotate(-5)'
+        "
       />
       <image
         v-if="options.glasses"
@@ -53,7 +78,13 @@
         :y="options.blame ? 25 : 21.5"
         height="5"
         width="11.5"
-        transform="rotate(-5)"
+        :transform="
+          options.marine
+            ? options.blame
+              ? 'scale(1.8) translate(-29, -18) rotate(1)'
+              : 'scale(1.8) translate(-12, -13.8) rotate(1)'
+            : 'rotate(-5)'
+        "
       />
       <image
         v-if="options.blame"

@@ -29,10 +29,15 @@ export default {
   },
   data: function() {
     return {
-      message: "I AM \nSANTA     CLAUS \nBARBIE",
-      messages: ["I AM", "SANTA     CLAUS", "BARBIE"],
+      message: "I AM \nSANTA     \nCLAUS      BARBIE",
+      messages: ["I AM", "SANTA     ", "CLAUS      BARBIE"],
       color: "rgba(120, 2, 2, 0.55)",
-      options: { glasses: false, hat: "christmas", blame: false },
+      options: {
+        glasses: false,
+        hat: "christmas",
+        blame: false,
+        marine: false,
+      },
     };
   },
   methods: {

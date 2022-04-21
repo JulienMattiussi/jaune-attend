@@ -57,6 +57,10 @@
         <input type="checkbox" name="blame" v-model="blame" />
         <label for="blame">With blame</label>
       </div>
+      <div>
+        <input type="checkbox" name="marine" v-model="marine" />
+        <label for="marine">Use Marine</label>
+      </div>
     </div>
     <button v-on:click="setRandom">
       Random
@@ -92,6 +96,7 @@ export default {
       glasses: this.options.glasses,
       hat: this.options.hat,
       blame: this.options.blame,
+      marine: this.options.marine,
     };
   },
   watch: {
@@ -109,6 +114,9 @@ export default {
     },
     blame: function(val) {
       this.handleChangeOption("blame", val);
+    },
+    marine: function(val) {
+      this.handleChangeOption("marine", val);
     },
   },
   methods: {
