@@ -1,40 +1,21 @@
-name: "Publish site to github pages"
+name: Build and Deploy
 
 on:
   workflow_dispatch: ~
 
 jobs:
-  publish-gh-page:
-    name: Publish site to github pages
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
 
-      - name: Build Site
+      - name: Install and Build 🔧
         run: |
-          echo ${GITHUB_TOKEN}
-          git fetch
           yarn
           yarn build
-          git checkout gh-page-test
-          rm -rf node_modules
-          rm -rf public
-          rm -rf yarn.lock
-          rm -rf README.md
-          rm -rf package.json
-          rm -rf babel.config.js
-          rm -rf makefile
-          rm -rf src
-          rm -rf css
-          rm -rf js
-          rm -rf fonts
-          rm -rf img
-          mv -f ./dist/* .
-          rm -rf dist
-          git add .
-          git commit -m "Publish page"
-          git push -f
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_GH_PAGE }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-page-test
+          folder: dist
